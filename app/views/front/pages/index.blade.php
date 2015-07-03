@@ -12,27 +12,6 @@
     {{ $page->content }}
 @stop
 
-@section('portfolio')
-<ul class="clearing-thumbs small-block-grid-1 medium-block-grid-2 large-block-grid-4">
-    @foreach ($portfolioItems as $item)
-        <li>
-          <div class="article">
-            <a href="{{ URL::route('front.portfolio.details', array('id' => $item->id)) }}">
-                <img data-caption="{{ $item->title }}" src="/custom/owner_images/{{ $item->id }}/{{ $item->pictures->first()->url }}">
-                <div class="overlay">&nbsp;</div>
-                <div class="caption">
-                    <h5>{{ $item->title }}</h5>
-                    <span>{{ $item->location }}</span>
-                </div>
-            </a>
-          </div>
-
-        </li>
-    @endforeach
-</ul>
-
-@stop
-
 @if ($page->type == 2)
     @section('contact-form')
         @if (!isset($message))
