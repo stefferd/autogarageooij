@@ -34,7 +34,7 @@ $button-font-align: center !default;
 $button-function-factor: -20% !default;
 
 // We use these to control button border styles.
-$button-border-width: 1px !default;
+$button-border-width: 0px !default;
 $button-border-style: solid !default;
 $button-bg-color: $primary-color !default;
 $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor) !default;
@@ -218,9 +218,6 @@ $button-disabled-cursor: $cursor-default-value !default;
       @include button-size;
       @include button-style;
 
-      $transparent: transparentize(#E6007E, 0.5);
-      $transparentHalf: transparentize(#E6007E, 0.25);
-
       @include single-transition(background-color);
 
       &.secondary { @include button-style($bg:$secondary-color, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color); }
@@ -228,7 +225,6 @@ $button-disabled-cursor: $cursor-default-value !default;
       &.alert     { @include button-style($bg:$alert-color, $bg-hover:$alert-button-bg-hover, $border-color:$alert-button-border-color); }
       &.warning   { @include button-style($bg:$warning-color, $bg-hover:$warning-button-bg-hover, $border-color:$warning-button-border-color); }
       &.info      { @include button-style($bg:$info-color, $bg-hover:$info-button-bg-hover, $border-color:$info-button-border-color); }
-      &.special   { @include button-style($bg:$transparent, $bg-hover:$transparentHalf, $border-color: $primary-color); }
 
       &.large  { @include button-size($padding:$button-lrg); }
       &.small  { @include button-size($padding:$button-sml); }
