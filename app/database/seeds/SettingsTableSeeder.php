@@ -13,7 +13,7 @@ class SettingsTableSeeder extends Seeder {
         DB::table('settings')->delete();
         Settings::create(array(
             'key' => 'contact_email',
-            'value' => 'stef@debmedia.nl',
+            'value' => 'info@domaim.com',
             'user_id' => 1
         ));
         Settings::create(array(
@@ -23,7 +23,7 @@ class SettingsTableSeeder extends Seeder {
         ));
         Settings::create(array(
             'key' => 'contact_name',
-            'value' => 'Stef van den Berg',
+            'value' => 'Administrator',
             'user_id' => 1
         ));
         Settings::create(array(

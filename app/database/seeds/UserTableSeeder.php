@@ -12,9 +12,9 @@ class UserTableSeeder extends Seeder {
     public function run() {
         DB::table('users')->delete();
         User::create(array(
-            'name' => 'Stef van den Berg',
-            'email' => 'stef@debmedia.nl',
-            'password' => Hash::make('test'),
+            'name' => 'Administrator',
+            'email' => 'admin',
+            'password' => Hash::make('admin'),
             'level' => 2
         ));
     }
