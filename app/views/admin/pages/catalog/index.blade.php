@@ -18,6 +18,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>&nbsp;</th>
                 <th>{{ Lang::get('catalog.title') }}</th>
                 <th>{{ Lang::get('catalog.created_at') }}</th>
                 <th>{{ Lang::get('catalog.updated_at') }}</th>
@@ -26,9 +27,20 @@
         </thead>
         <tbody>
             @foreach($items as $item)
-                <tr>
+                @if ($item->car->status === 'Sold')
+                    <tr class="flag sold">
+                @else
+                    <tr>
+                @endif
                     <td>{{$item->id}}</td>
-                    <td>{{$item->title}}</td>
+                    <td>
+                        @if ($item->car->main_pic > 0)
+                            <img src="{{ URL::asset('custom/owner_images/') }}/{{ $item->id }}/250-{{ Pictures::where('id', $item->car->main_pic)->first()->url }}" class="img-responsive" width="100" alt="{{$item->title}}" />
+                        @else
+                            &nbsp;
+                        @endif
+                    </td>
+                    <td>{{$item->title}} @if ($item->car->status === 'Sold')(SOLD)@endif</td>
                     <td>{{$item->created_at}}</td>
                     <td>{{$item->updated_at}}</td>
                     <td>
@@ -51,4 +63,9 @@
         </tbody>
     </table>
     <a href="{{ URL::route('admin.catalog.create') }}">{{ Lang::get('admin.action_add') }}</a>
+    <style>
+        tr.flag.sold {
+            background-color: #89edac;
+        }
+    </style>
 @stop

@@ -28,13 +28,13 @@ class Catalog extends Eloquent implements UserInterface, RemindableInterface {
         return $this->hasMany('Pictures');
     }
 
-//    public function car()
-//    {
-//        return $this->hasOne('Car');
-//    }
-
-    public function project()
+    public function car()
     {
-        return $this->hasOne('Project');
+        return $this->hasOne('Car');
     }
+
+//    public function project()
+//    {
+//        return $this->hasOne('Project');
+//    }
 }

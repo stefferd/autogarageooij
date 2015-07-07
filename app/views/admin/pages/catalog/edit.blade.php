@@ -27,14 +27,10 @@
                 {{ Form::file('pictures[]', array('multiple' => true)) }}
                 {{ $errors->first('picture') }}
             </div>
-            {{ Form::hidden('main_pic', $item->project->main_pic, array('id' => 'main_pic')) }}
+            {{ Form::hidden('main_pic', $item->car->main_pic, array('id' => 'main_pic')) }}
             <div class="pictures">
                 @foreach($item->pictures as $picture)
-                    <div class="picture">
-                        <img onclick="setMainImage(this, {{$picture->id}});" src="{{ URL::to('/') . '/custom/owner_images/' . $item->id . '/250-' . $picture->url }}" width="250" alt="{{$item->title}}" />
-                        <a href="{{ URL::route('admin.catalog.deletepicture', array('id' => $picture->id)) }}">{{ Lang::get('admin.action_delete') }}</a>
-                    </div>
-
+                    <img onclick="setMainImage(this, {{$picture->id}});" src="{{ URL::to('/') . '/custom/owner_images/' . $item->id . '/250-' . $picture->url }}" width="250" alt="{{$item->title}}" />
                 @endforeach
             </div>
             <script type="text/javascript">
@@ -50,53 +46,57 @@
                 }
 
                 .pictures img.selected {
-                    border: 9px solid deeppink;
+                    border: 3px solid #333;
                 }
             </style>
+            <div class="form-group">
+                {{ Form::button(Lang::get('admin.action_save'), array('class' => 'btn btn-primary', 'type' => 'submit')) }}
+                <a href="{{ URL::route('admin.catalog.index') }}">{{ Lang::get('admin.action_cancel') }}</a>
+            </div>
         </div>
         <div class="col-xs-12 col-md-6">
             <h3>Details</h3>
             <div class="form-group">
-                {{ Form::text('customer', $item->project->customer , array('placeholder' => 'Klant', 'class' => 'form-control')) }}
-                {{ $errors->first('customer') }}
+                {{ Form::text('brand', $item->car->brand , array('placeholder' => 'Brand', 'class' => 'form-control')) }}
+                {{ $errors->first('brand') }}
             </div>
             <div class="form-group">
-                {{ Form::text('role', $item->project->role , array('placeholder' => 'Rol / Functie', 'class' => 'form-control')) }}
-                {{ $errors->first('role') }}
+                {{ Form::text('type', $item->car->type , array('placeholder' => 'Type', 'class' => 'form-control')) }}
+                {{ $errors->first('type') }}
             </div>
             <div class="form-group">
-                {{ Form::text('location', $item->project->location , array('placeholder' => 'Locatie', 'class' => 'form-control')) }}
-                {{ $errors->first('location') }}
+                {{ Form::text('price', $item->car->price , array('placeholder' => 'Price', 'class' => 'form-control')) }}
             </div>
             <div class="form-group">
-                {{ Form::label('start-month', Lang::get('catalog.start'), array('class' => 'control-label')) }}
-                <div class="row">
-                    <div class="col-xs-4">
-                        {{ Form::selectMonth('start-month', explode('-', $item->project->start)[0], array('placeholder' => 'Start', 'class' => 'form-control'))}}
-                    </div>
-                    <div class="col-xs-4">
-                        {{ Form::selectYear('start-year', 2015, 1990, explode('-', $item->project->start)[1], array('placeholder' => 'End', 'class' => 'form-control'))}}
-                    </div>
-                    <div class="col-xs-4">&nbsp;</div>
-                </div>
+                {{ Form::text('engine', $item->car->engine , array('placeholder' => 'Engine', 'class' => 'form-control')) }}
+                {{ $errors->first('engine') }}
             </div>
             <div class="form-group">
-                {{ Form::label('end-month', Lang::get('catalog.end'), array('class' => 'control-label')) }}
-                <div class="row">
-                    <div class="col-xs-4">
-                        {{ Form::selectMonth('end-month', ($item->project->end != 'present') ? explode('-', $item->project->end)[0] : null, array('placeholder' => 'Start', 'class' => 'form-control'))}}
-                    </div>
-                    <div class="col-xs-4">
-                        {{ Form::selectYear('end-year', 2015, 1990, ($item->project->end != 'present') ? explode('-', $item->project->end)[1]: 2015, array('placeholder' => 'End', 'class' => 'form-control'))}}
-                    </div>
-                    <div class="col-xs-4">
-                        {{ Form::checkbox('not-ended') }} {{ Lang::get('catalog.notended') }}
-                    </div>
-                </div>
+                {{ Form::select('transmission', array('Manual transmission' => 'Manual transmission', 'Automatic transmission' => 'Automatic transmission'), $item->car->transmission, array('placeholder' => 'Transmission', 'class' => 'form-control'))}}
+                {{ $errors->first('make') }}
             </div>
             <div class="form-group">
-                {{ Form::button(Lang::get('admin.action_save'), array('class' => 'btn btn-primary', 'type' => 'submit')) }}
-                <a href="{{ URL::route('admin.catalog.index') }}">{{ Lang::get('admin.action_cancel') }}</a>
+                {{ Form::text('make', $item->car->make , array('placeholder' => 'Make', 'class' => 'form-control')) }}
+                {{ $errors->first('make') }}
+            </div>
+            <div class="form-group">
+                {{ Form::text('milage', $item->car->milage , array('placeholder' => 'Milage', 'class' => 'form-control')) }}
+                {{ $errors->first('milage') }}
+            </div>
+            <div class="form-group">
+                {{ Form::select('status',
+                    array(
+                        'Available' => 'Available',
+                        'Coming soon' => 'Coming soon',
+                        'Reserved' => 'Reserved',
+                        'Sold' => 'Sold'
+                    ), $item->car->status, array('placeholder' => 'Status', 'class' => 'form-control'))}}
+            </div>
+            <div class="form-group">
+                {{ Form::text('location', $item->car->location , array('placeholder' => 'Location', 'class' => 'form-control')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::text('youtube', $item->car->youtube , array('placeholder' => 'Youtube url', 'class' => 'form-control')) }}
             </div>
         </div>
     {{ Form::close() }}

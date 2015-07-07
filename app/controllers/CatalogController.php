@@ -9,7 +9,7 @@ class CatalogController extends \BaseController {
 	 */
 	public function index()
 	{
-        $items = Catalog::orderBy('created_at', 'desc')->get();
+        $items = Catalog::join('cars', 'catalog.id', '=', 'cars.id')->orderBy('cars.status', 'ASC')->orderBy('catalog.created_at', 'desc')->get();
         return View::make('admin.pages.catalog.index')->with(['items' => $items]);
 	}
 
@@ -40,15 +40,21 @@ class CatalogController extends \BaseController {
         $catalog->user_id = Auth::user()->id;
         $catalog->save();
 
-        $project = new Project;
-        $project->role = $inputs['role'];
-        $project->customer = $inputs['customer'];
-        $project->location = $inputs['location'];
-        $project->start = $inputs['start-month'] . '-' . $inputs['start-year'];
-        $project->end = (isset($inputs['not-ended']) && $inputs['not-ended']) ? 'present' : $inputs['end-month'] . '-' . $inputs['end-year'];
-        $project->catalog_id = $catalog->id;
-        $project->user_id = Auth::user()->id;
-        $project->save();
+        $car = new Car;
+        $car->brand = $inputs['brand'];
+        $car->engine = $inputs['engine'];
+        $car->make = $inputs['make'];
+        $car->milage = $inputs['milage'];
+        $car->type = $inputs['type'];
+        $car->transmission = $inputs['transmission'];
+        $car->status = $inputs['status'];
+        $car->location = $inputs['location'];
+        $car->price = $inputs['price'];
+        $car->youtube = $inputs['youtube'];
+        $car->main_pic = 0;
+        $car->user_id = Auth::user()->id;
+        $car->catalog_id = $catalog->id;
+        $car->save();
 
         $pictures = $inputs['pictures'];
         Log::info(user_photo_path() . $catalog->id . '/');
@@ -59,7 +65,7 @@ class CatalogController extends \BaseController {
             foreach($pictures as $picture) {
                 if ($picture != null) {
                     $image = Image::make($picture->getRealPath());
-                    $fileName = str_replace(' ', '_', $picture->getClientOriginalName());
+                    $fileName = str_replace(' ', '_', strrolower($picture->getClientOriginalName()));
                     $image->resize(1024, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })
@@ -132,21 +138,27 @@ class CatalogController extends \BaseController {
         $catalog->user_id = Auth::user()->id;
         $catalog->save();
 
-        $project = $catalog->project;
-        if (empty($project)) {
-            $project = new Project;
+        $car = $catalog->car;
+        if (empty($car)) {
+            $car = new Car;
         } else {
-            $project = Project::find($catalog->project->id);
+            $car = Car::find($catalog->car->id);
         }
-        $project->role = $inputs['role'];
-        $project->customer = $inputs['customer'];
-        $project->location = $inputs['location'];
-        $project->start = $inputs['start-month'] . '-' . $inputs['start-year'];
-        $project->end = (isset($inputs['not-ended']) && $inputs['not-ended']) ? 'present' : $inputs['end-month'] . '-' . $inputs['end-year'];
-        $project->main_pic = $inputs['main_pic'];
+        $car->brand = $inputs['brand'];
+        $car->engine = $inputs['engine'];
+        $car->make = $inputs['make'];
+        $car->milage = $inputs['milage'];
+        $car->type = $inputs['type'];
+        $car->transmission = $inputs['transmission'];
+        $car->status = $inputs['status'];
+        $car->location = $inputs['location'];
+        $car->price = $inputs['price'];
+        $car->youtube = $inputs['youtube'];
+        $car->main_pic = $inputs['main_pic'];
 
-        $project->user_id = Auth::user()->id;
-        $project->save();
+        $car->user_id = Auth::user()->id;
+        $car->catalog_id = $catalog->id;
+        $car->save();
 
         $pictures = $inputs['pictures'];
         if (!File::isDirectory(user_photo_path() . $catalog->id . '/')) {
@@ -155,7 +167,7 @@ class CatalogController extends \BaseController {
         if (isset($pictures) && count($pictures) > 0) {
             foreach($pictures as $picture) {
                 if ($picture != null) {
-                    $fileName = str_replace(' ', '_', $picture->getClientOriginalName());
+                    $fileName = str_replace(' ', '_', strtolower($picture->getClientOriginalName()));
                     $image = Image::make($picture->getRealPath());
                     $image->resize(1024, null, function ($constraint) {
                         $constraint->aspectRatio();
@@ -172,11 +184,7 @@ class CatalogController extends \BaseController {
                         ->resize(250, null, function ($constraint) {
                             $constraint->aspectRatio();
                         })
-                        ->save(user_photo_path() . $catalog->id . '/' . '250-' . $fileName)
-                        ->resize(75, null, function ($constraint) {
-                            $constraint->aspectRatio();
-                        })
-                        ->save(user_photo_path() . $catalog->id . '/' . '75-' . $fileName);
+                        ->save(user_photo_path() . $catalog->id . '/' . '250-' . $fileName);
                     $pic = new Pictures;
                     $pic->url = $fileName;
                     $pic->user_id = Auth::user()->id;
@@ -199,20 +207,13 @@ class CatalogController extends \BaseController {
 	public function destroy($id)
 	{
 		$catalog = Catalog::find($id);
-        $project = Project::find($catalog->project->id);
+        $car = Car::find($catalog->car->id);
 
         $catalog->delete();
-        $project->delete();
+        $car->delete();
 
         return Redirect::route('admin.catalog.index')->with('success', Lang::get('messages.catalog_delete'));
 	}
-
-    public function delete($id) {
-        $picture = Pictures::find($id);
-        $picture->delete();
-
-        return Redirect::route('admin.catalog.index')->with('success', Lang::get('messages.catalog_delete_picture'));
-    }
 
 
 }

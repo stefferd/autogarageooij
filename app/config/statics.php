@@ -7,7 +7,7 @@
  */
 
 return array(
-    'customer' => 'Dexperts',
-    'customer_url' => 'Dexperts.nl',
-    'slogan' => 'AngularJS - Meteor - React - KnockoutJS - EmberJS - JavaScript - Sass - Grunt - Jasmine - Karma - Mocha - NodeUnit'
+    'customer' => 'Autogarageooij',
+    'customer_url' => 'Autogarageooij.nl',
+    'slogan' => 'Prijs / kwaliteit heeft bij ons de hoogste prioriteit!'
 );

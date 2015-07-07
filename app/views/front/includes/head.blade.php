@@ -10,10 +10,7 @@
 <meta property="og:image"  content="http://www.{{ Config::get('statics.customer_url') }}/public/assets/build/img/juifconsultancy-logo.png" />
 <meta property="og:description"  content="{{ Config::get('statics.customer') }} | @yield('description')" />
 <meta property="og:site_name" content="{{ Config::get('statics.customer_url') }}" />
-<meta property="og:url" content="http://www.{{ Config::get('statics.customer_url') }}/{{ str_replace(' ', '-', strtolower($page->title)) }}" />
+<meta property="og:url" content="http://www.{{ Config::get('statics.customer_url') }}/{{ str_replace(' ', '-', strtolower($page->path)) }}" />
 
-<link rel="stylesheet" href="{{ URL::asset('assets/build/css/library/foundation/normalize.css') }}" />
-<link rel="stylesheet" href="{{ URL::asset('assets/build/css/library/foundation/foundation.css') }}" />
-<link rel="stylesheet" href="{{ URL::asset('assets/build/css/style.css') }}" />
-<link rel="stylesheet" href="{{ URL::asset('assets/build/css/styles.css') }}" />
+<link rel="stylesheet" href="{{ URL::asset('assets/build/css/main.css') }}" />
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>

@@ -18,10 +18,24 @@
   "devDependencies": {
     "bower": "^1.4.1",
     "grunt-cli": "^0.1.13",
-    "grunt-contrib-uglify": "^0.9.1"
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-imagemin": "^0.9.4",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "jshint-stylish": "^2.0.1",
+    "less-plugin-autoprefix": "^1.4.2",
+    "less-plugin-clean-css": "^1.5.0",
+    "load-grunt-tasks": "^3.2.0",
+    "time-grunt": "^1.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "less": "./node_modules/.bin/grunt less:development",
+    "serve": "./node_modules/.bin/grunt",
+    "build": "./node_modules/.bin/grunt build"
   },
   "repository": {
     "type": "git",

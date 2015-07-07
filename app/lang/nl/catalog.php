@@ -7,14 +7,14 @@
  */
 
 return array(
-    'menu' => 'Projecten',
+    'menu' => 'Occasions',
     'title' => 'Titel',
     'created_at' => 'Aangemaakt op',
     'updated_at' => 'Aangepast op',
     'headtitle' => 'Items beheren',
-    'index' => 'Projecten',
-    'edit' => 'Project bewerken',
-    'add' => 'Project toevoegen',
+    'index' => 'Occasions',
+    'edit' => 'Occasion bewerken',
+    'add' => 'Occasion toevoegen',
     'content' => 'Omschrijving',
     'picture' => 'Afbeeldingen',
     'start' => 'Startdatum',

@@ -18,8 +18,8 @@ class FrontController extends BaseController {
 	public function index()
 	{
         $page = Page::find(1);
-        $portfolioItems = Catalog::all();
-		return View::make('front.pages.index', compact('page', 'portfolioItems'));
+        $menuItems = Page::all();
+		return View::make('front.pages.index', compact('page', 'portfolioItems', 'menuItems'));
 	}
 
     public function test() {
@@ -39,8 +39,9 @@ class FrontController extends BaseController {
 
     public function page($pageName) {
         $pageName = str_replace('-', ' ', $pageName);
-        $page = Page::where('title', 'LIKE', $pageName)->first();
-        return View::make('front.pages.page')->with(['page' => $page]);
+        $page = Page::where('path', 'LIKE', $pageName)->first();
+        $menuItems = Page::all();
+        return View::make('front.pages.page', compact('page', 'menuItems'));
     }
 
     public function subscribe() {

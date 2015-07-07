@@ -1,35 +1,30 @@
 <!doctype html>
 <html lang="nl">
-    <head>
-        @include('front.includes.head')
-    </head>
-    <body class="{{$page->title}}">
-        <div class="hero still">
-            <div class="row header">
-                <div class="small-12 medium-4 large-6 columns">
-                    <h1>
-                        <a href="/" title="Dexperts - Front-end developer | AngularJS | KnockoutJS | JavaScript | Grunt | Sass">
-                            <img src="{{ URL::asset('assets/build/img/dexperts-logo.png') }}" width="200" height="90" alt="Dexperts - Front-end developer | AngularJS | KnockoutJS | JavaScript | Grunt | Sass" />
-                        </a>
-                    </h1>
-                </div>
-                <div class="small-12 medium-8 large-6 columns">
-                    <div class="nav-bar">
-                        <ul class="button-group">
-                            <li><a href="{{ URL::route('front.index') }}" class="button">Home</a></li>
-                            <li><a href="{{ URL::route('front.portfolio') }}" class="button">Portfolio</a></li>
-                            <li><a href="{{ URL::route('front.blog') }}" class="button">Blog</a></li>
-                            <li><a href="{{ URL::route('front.contact') }}" class="button">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
+<head>
+    @include('front.includes.head')
+</head>
+<body class="{{$page->path}}">
+    <div class="hero">
+        <div class="row header">
+            <div class="small-12 medium-7 columns">
+                &nbsp;
             </div>
-            <div class="row">
-                <div class="large-12 columns intro-text">
-                    <p>@yield('title')</p>
+            <div class="small-12 medium-5 columns">
+                <div class="nav-bar">
+                    <ul class="button-group">
+                        @if (isset($menuItems))
+                            @foreach($menuItems as $item)
+                                <li>
+                                    <a href="/{{$item->path}}">{{$item->path}}</a>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="content">
         <div class="row">
             @if ($page->type == 2)
                 <div class="medium-4 columns">
@@ -46,10 +41,14 @@
                 </div>
             @else
                 <div class="medium-12 columns">
+                  <h1>@yield('title')</h1>
                   <p>@yield('content')</p>
                 </div>
             @endif
         </div>
+    </div>
+    <div class="footer">
       @include('front.includes.footer')
-    </body>
+    </div>
+</body>
 </html>
