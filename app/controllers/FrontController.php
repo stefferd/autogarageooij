@@ -76,7 +76,7 @@ class FrontController extends BaseController {
             $settingsEmail = Settings::where('key', '=', 'contact_email')->first();
             $settingsEmailName = Settings::where('key', '=', 'contact_name')->first();
             $data = array(
-                'subject' => 'Contact form dexperts.nl',
+                'subject' => 'Contact formulier autogarageooij.nl',
                 'to' => $settingsEmail->value,
                 'to_name' => $settingsEmailName->value,
                 'from_message' => Input::get('message'),
@@ -87,7 +87,7 @@ class FrontController extends BaseController {
             {
                 $message->to($data['to'], $data['to_name'])->from($data['from'], $data['from_name'])->subject($data['subject']);
             });
-            return View::make('front.pages.page')->with(['page' => $page, 'message' => 'Uw gegevens zijn verzonden, ik zal zo snel mogelijk contact met u opnemen.']);
+            return View::make('front.pages.page')->with(['page' => $page, 'message' => 'Uw gegevens zijn verzonden, wij zullen zo snel mogelijk contact met u opnemen.']);
         }
     }
 
@@ -175,7 +175,7 @@ class FrontController extends BaseController {
             $settingsEmail = Settings::where('key', '=', 'contact_email')->first();
             $settingsEmailName = Settings::where('key', '=', 'contact_name')->first();
             $data = array(
-                'subject' => 'Inventory contact Classiccarseurope.eu',
+                'subject' => 'Inventory contact autogarageooij.nl',
                 'to' => $settingsEmail->value,
                 'to_name' => $settingsEmailName->value,
                 'from_message' => Input::get('message'),

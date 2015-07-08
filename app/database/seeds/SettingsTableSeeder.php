@@ -13,7 +13,7 @@ class SettingsTableSeeder extends Seeder {
         DB::table('settings')->delete();
         Settings::create(array(
             'key' => 'contact_email',
-            'value' => 'info@domaim.com',
+            'value' => 'info@domain.com',
             'user_id' => 1
         ));
         Settings::create(array(

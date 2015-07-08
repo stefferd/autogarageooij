@@ -21,6 +21,7 @@
                     </div>
                     <p>{{ Form::button('Inloggen', array('class' => 'btn btn-primary', 'type' => 'submit')) }}</p>
                 {{ Form::close() }}
+                <a href="/">Terug naar website</a>
             </div>
         </div>
     </div>

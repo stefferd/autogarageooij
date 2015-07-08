@@ -88,10 +88,10 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function() {
 //    Artisan::call('db:seed', array('--force' => true));
 //});
 
-Route::get('/install/migrate', function() {
-    Artisan::call('migrate', array('--force' => true));
-    Artisan::call('db:seed', array('--force' => true));
-});
+//Route::get('/install/migrate', function() {
+//    Artisan::call('migrate', array('--force' => true));
+//    Artisan::call('db:seed', array('--force' => true));
+//});
 
 /* Frontend */
 Route::get('/', ['as' => 'front.index', 'uses' => 'FrontController@index']);

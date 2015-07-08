@@ -19,29 +19,32 @@ class PageTableSeeder extends Seeder {
             'description' => 'Home',
             'type' => 1,
             'start' => 1,
-            'active' => 1
+            'active' => 1,
+            'path' => 'home'
         ));
 
         Page::create(array(
-            'title' => 'About us',
+            'title' => 'Service',
             'content' => '',
             'user_id' => 1,
             'keywords' => '',
             'description' => '',
             'type' => 1,
             'start' => 1,
-            'active' => 1
+            'active' => 1,
+            'path' => 'service'
         ));
 
         Page::create(array(
-            'title' => 'Other page',
-            'content' => 'others page',
+            'title' => 'Occasions',
+            'content' => 'Occasions',
             'user_id' => 1,
             'keywords' => '',
             'description' => '',
-            'type' => 1,
+            'type' => 3,
             'start' => 1,
-            'active' => 1
+            'active' => 1,
+            'path' => 'occasions'
         ));
 
         Page::create(array(
@@ -52,7 +55,8 @@ class PageTableSeeder extends Seeder {
             'description' => '',
             'type' => 2,
             'start' => 1,
-            'active' => 1
+            'active' => 1,
+            'path' => 'contact'
         ));
     }
 }

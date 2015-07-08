@@ -11,7 +11,7 @@ class CatalogTableSeeder extends Seeder {
 
     public function run() {
         DB::table('catalog')->delete();
-        DB::table('projects')->delete();
+        DB::table('cars')->delete();
 
         /* Put the entries here */
     }
@@ -23,7 +23,7 @@ class CatalogTableSeeder extends Seeder {
             'user_id' => 1,
             'tags' => ''
         ));
-        Project::create([
+        Car::create([
             'role' => $role,
             'customer' => $customer,
             'start' => $start,
