@@ -54,8 +54,8 @@ return array(
 
         'mysql' => array(
             'driver'    => 'mysql',
-            'host'      => '188.166.26.136',
-            'database'  => 'dexperts',
+            'host'      => 'db.autogarageooij.nl',
+            'database'  => 'md289232db332919',
             'username'  => 'forge',
             'password'  => 'EKsKV72dH50MVQn5p1da',
             'charset'   => 'utf8',

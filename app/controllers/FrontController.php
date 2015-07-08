@@ -147,13 +147,16 @@ class FrontController extends BaseController {
             $brandsForFilter = DB::table('cars')->distinct('brand')->lists('brand');
         }
 
-        return View::make('front.pages.inventory-filtered')->with(['entries' => $entries, 'page' => $page, 'filters' => Session::get('filter'), 'brandsForFilter' => $brandsForFilter]);
+        $menuItems = Page::all();
+
+        return View::make('front.pages.inventory-filtered')->with(['entries' => $entries, 'page' => $page, 'filters' => Session::get('filter'), 'brandsForFilter' => $brandsForFilter, 'menuItems' => $menuItems]);
     }
 
     public function details($id) {
         $entry = Catalog::find($id);
+        $menuItems = Page::all();
         $page = Page::where('type', '=', 3)->firstOrFail();
-        return View::make('front.pages.details')->with(['entry' => $entry, 'page' => $page]);
+        return View::make('front.pages.details')->with(['entry' => $entry, 'page' => $page, 'menuItems' => $menuItems]);
     }
 
     public function detailsContact($id) {

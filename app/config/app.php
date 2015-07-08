@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://www.dexperts.nl',
+	'url' => 'http://www.autogarageooij.nl',
 
 	/*
 	|--------------------------------------------------------------------------

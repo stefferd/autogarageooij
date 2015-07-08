@@ -25,7 +25,7 @@ class Car extends Eloquent implements UserInterface, RemindableInterface {
 
     public function catalog()
     {
-        return $this->belongsTo('Catalog');
+        return $this->belongsTo('Catalog', 'catalog_id', 'id');
     }
 
 }

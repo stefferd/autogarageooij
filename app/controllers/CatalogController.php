@@ -9,7 +9,7 @@ class CatalogController extends \BaseController {
 	 */
 	public function index()
 	{
-        $items = Catalog::join('cars', 'catalog.id', '=', 'cars.id')->orderBy('cars.status', 'ASC')->orderBy('catalog.created_at', 'desc')->get();
+        $items = Catalog::with('car')->orderBy('catalog.created_at', 'desc')->get();
         return View::make('admin.pages.catalog.index')->with(['items' => $items]);
 	}
 
@@ -206,7 +206,8 @@ class CatalogController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$catalog = Catalog::find($id);
+		$catalog = Catalog::with('car')->find($id);
+
         $car = Car::find($catalog->car->id);
 
         $catalog->delete();

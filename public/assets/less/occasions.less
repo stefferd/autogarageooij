@@ -1,0 +1,31 @@
+.dl-horizontal {
+
+  dd, dt {
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+  }
+}
+
+.tag {
+  display: block;
+  padding: 10px;
+  background: @primary;
+  color: @white;
+  width: 220px;
+  text-align: center;
+  margin-bottom: 10px;
+
+  &:after {
+    content: ' ';
+    float: right;
+    border-top: 36px solid transparent;
+    border-bottom: 36px solid transparent;
+    border-left: 30px solid @primary;
+    height: 71px;
+    width: 60px;
+    position: relative;
+    left: 70px;
+    margin-top: -10px;
+  }
+}

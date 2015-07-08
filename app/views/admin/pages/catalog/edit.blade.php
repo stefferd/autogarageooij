@@ -28,6 +28,9 @@
                 {{ $errors->first('picture') }}
             </div>
             {{ Form::hidden('main_pic', $item->car->main_pic, array('id' => 'main_pic')) }}
+            @if ($item->car->main_pic === 0)
+                <p>Er is nog geen hoofdafbeelding gekozen, klik op een afbeelding die op de overzichtpagina getoond moet worden en klik op "Opslaan"</p>
+            @endif
             <div class="pictures">
                 @foreach($item->pictures as $picture)
                     <img onclick="setMainImage(this, {{$picture->id}});" src="{{ URL::to('/') . '/custom/owner_images/' . $item->id . '/250-' . $picture->url }}" width="250" alt="{{$item->title}}" />
@@ -57,43 +60,43 @@
         <div class="col-xs-12 col-md-6">
             <h3>Details</h3>
             <div class="form-group">
-                {{ Form::text('brand', $item->car->brand , array('placeholder' => 'Brand', 'class' => 'form-control')) }}
+                {{ Form::text('brand', $item->car->brand , array('placeholder' => 'Merk', 'class' => 'form-control')) }}
                 {{ $errors->first('brand') }}
             </div>
             <div class="form-group">
-                {{ Form::text('type', $item->car->type , array('placeholder' => 'Type', 'class' => 'form-control')) }}
+                {{ Form::text('type', $item->car->type , array('placeholder' => 'Model', 'class' => 'form-control')) }}
                 {{ $errors->first('type') }}
             </div>
             <div class="form-group">
-                {{ Form::text('price', $item->car->price , array('placeholder' => 'Price', 'class' => 'form-control')) }}
-            </div>
-            <div class="form-group">
-                {{ Form::text('engine', $item->car->engine , array('placeholder' => 'Engine', 'class' => 'form-control')) }}
+                {{ Form::text('engine', $item->car->engine , array('placeholder' => 'Uitvoering', 'class' => 'form-control')) }}
                 {{ $errors->first('engine') }}
             </div>
             <div class="form-group">
-                {{ Form::select('transmission', array('Manual transmission' => 'Manual transmission', 'Automatic transmission' => 'Automatic transmission'), $item->car->transmission, array('placeholder' => 'Transmission', 'class' => 'form-control'))}}
+                {{ Form::text('price', $item->car->price , array('placeholder' => 'Prijs', 'class' => 'form-control')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::select('transmission', array('Handgeschakeld' => 'Handgeschakeld', 'Automatisch' => 'Automatisch'), $item->car->transmission, array('placeholder' => 'Transmissie', 'class' => 'form-control'))}}
                 {{ $errors->first('make') }}
             </div>
             <div class="form-group">
-                {{ Form::text('make', $item->car->make , array('placeholder' => 'Make', 'class' => 'form-control')) }}
+                {{ Form::text('make', $item->car->make , array('placeholder' => 'Bouwjaar', 'class' => 'form-control')) }}
                 {{ $errors->first('make') }}
             </div>
             <div class="form-group">
-                {{ Form::text('milage', $item->car->milage , array('placeholder' => 'Milage', 'class' => 'form-control')) }}
+                {{ Form::text('milage', $item->car->milage , array('placeholder' => 'Kilometerstand', 'class' => 'form-control')) }}
                 {{ $errors->first('milage') }}
             </div>
             <div class="form-group">
                 {{ Form::select('status',
                     array(
-                        'Available' => 'Available',
-                        'Coming soon' => 'Coming soon',
-                        'Reserved' => 'Reserved',
-                        'Sold' => 'Sold'
+                        'Available' => 'Beschikbaar',
+                        'Coming soon' => 'Binnenkort beschikbaar',
+                        'Reserved' => 'Gereserveerd',
+                        'Sold' => 'Verkocht'
                     ), $item->car->status, array('placeholder' => 'Status', 'class' => 'form-control'))}}
             </div>
             <div class="form-group">
-                {{ Form::text('location', $item->car->location , array('placeholder' => 'Location', 'class' => 'form-control')) }}
+                {{ Form::text('location', $item->car->location , array('placeholder' => 'Locatie', 'class' => 'form-control')) }}
             </div>
             <div class="form-group">
                 {{ Form::text('youtube', $item->car->youtube , array('placeholder' => 'Youtube url', 'class' => 'form-control')) }}

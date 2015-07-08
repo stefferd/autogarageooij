@@ -51,8 +51,6 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ URL::route('admin.newsletter.create', array('catalog' => $item->id)) }}">{{ Lang::get('admin.action_newsletter') }}</a></li>
-                                <li class="seperator">&nbsp;</li>
                                 <li><a href="{{ URL::route('admin.catalog.delete', array('id' => $item->id)) }}">{{ Lang::get('admin.action_delete') }}</a></li>
                             </ul>
                         </div>

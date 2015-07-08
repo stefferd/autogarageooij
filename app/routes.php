@@ -95,15 +95,15 @@ Route::get('/install/migrate', function() {
 
 /* Frontend */
 Route::get('/', ['as' => 'front.index', 'uses' => 'FrontController@index']);
-Route::get('/portfolio', ['as' => 'front.portfolio', 'uses' => 'FrontController@inventory']);
-Route::post('/portfolio', ['as' => 'front.portfolio.filter', 'uses' => 'FrontController@filter']);
-Route::get('/portfolio/{id}/details', ['as' => 'front.portfolio.details', 'uses' => 'FrontController@details']);
-Route::post('/portfolio/{id}/details', ['as' => 'front.portfolio.contact', 'uses' => 'FrontController@detailsContact']);
-Route::get('/portfolio/{filter}/{value}', ['as' => 'front.portfolio.prefilter', 'uses' => 'FrontController@filter']);
+Route::get('/occasions', ['as' => 'front.inventory', 'uses' => 'FrontController@filter']);
+Route::post('/occasions', ['as' => 'front.inventory.filter', 'uses' => 'FrontController@filter']);
+Route::get('/occasions/{id}/details', ['as' => 'front.inventory.details', 'uses' => 'FrontController@details']);
+Route::post('/occasions/{id}/details', ['as' => 'front.inventory.contact', 'uses' => 'FrontController@detailsContact']);
+Route::get('/occasions/{filter}/{value}', ['as' => 'front.inventory.prefilter', 'uses' => 'FrontController@filter']);
 Route::post('/subscribe', ['as' => 'front.newsletter', 'uses' => 'FrontController@subscribe']);
 Route::post('/contact', ['as' => 'front.contact', 'uses' => 'FrontController@contact']);
 Route::get('/blog', ['as' => 'front.blog', 'uses' => 'BlogController@index']);
-Route::get('/{pageName}', ['as' => 'front.page', 'uses' => 'FrontController@page', 'except' => 'admin, install, inventory, newsubscription, blog, contact']);
+Route::get('/{pageName}', ['as' => 'front.page', 'uses' => 'FrontController@page', 'except' => 'admin, install, occasions, newsubscription, blog, contact']);
 
 // ===============================================
 // 404 ===========================================

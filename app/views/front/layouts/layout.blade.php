@@ -30,10 +30,10 @@
                 <div class="medium-4 columns">
                     <p>@yield('content')</p>
                     <address>
-                        <abbr title="Mobile">M:</abbr> <a href="tel:{{Settings::where('key', '=', 'contact_phone')->first()->value }}" title="{{Settings::where('key', '=', 'contact_phone')->first()->value }}">{{Settings::where('key', '=', 'contact_phone')->first()->value }}</a><br />
+                        <abbr title="Mobile">M:</abbr> <a href="tel:{{Settings::where('key', '=', 'contact_mobile')->first()->value }}" title="{{Settings::where('key', '=', 'contact_mobile')->first()->value }}">{{Settings::where('key', '=', 'contact_mobile')->first()->value }}</a><br />
+                        <abbr title="LinkedIn">T:</abbr> <a href="tel://{{Settings::where('key', '=', 'contact_phone')->first()->value }}" title="{{Settings::where('key', '=', 'contact_phone')->first()->value }}">{{Settings::where('key', '=', 'contact_phone')->first()->value }}</a><br />
                         <abbr title="E-mail">E:</abbr> <a href="mailto:{{Settings::where('key', '=', 'contact_email')->first()->value }}" title="{{Settings::where('key', '=', 'contact_email')->first()->value }}">{{Settings::where('key', '=', 'contact_email')->first()->value }}</a><br />
                         <abbr title="Website">W:</abbr> <a href="http://{{Settings::where('key', '=', 'contact_website')->first()->value }}" title="{{Settings::where('key', '=', 'contact_website')->first()->value }}">{{Settings::where('key', '=', 'contact_website')->first()->value }}</a><br />
-                        <abbr title="LinkedIn">IN:</abbr> <a href="http://{{Settings::where('key', '=', 'social_linkedin')->first()->value }}" title="{{Settings::where('key', '=', 'social_linkedin')->first()->value }}">{{Settings::where('key', '=', 'social_linkedin')->first()->value }}</a><br />
                     </address>
                 </div>
                 <div class="medium-8 columns">

@@ -36,43 +36,43 @@
         <div class="col-xs-12 col-md-6">
             <h3>Details</h3>
             <div class="form-group">
-                {{ Form::text('brand', null , array('placeholder' => 'Brand', 'class' => 'form-control')) }}
+                {{ Form::text('brand', null , array('placeholder' => 'Merk', 'class' => 'form-control')) }}
                 {{ $errors->first('brand') }}
             </div>
             <div class="form-group">
-                {{ Form::text('type', null , array('placeholder' => 'Type', 'class' => 'form-control')) }}
+                {{ Form::text('type', null , array('placeholder' => 'Model', 'class' => 'form-control')) }}
                 {{ $errors->first('type') }}
             </div>
             <div class="form-group">
-                {{ Form::text('price', null , array('placeholder' => 'Price', 'class' => 'form-control')) }}
-            </div>
-            <div class="form-group">
-                {{ Form::text('engine', null , array('placeholder' => 'Engine', 'class' => 'form-control')) }}
+                {{ Form::text('engine', null , array('placeholder' => 'Uitvoering', 'class' => 'form-control')) }}
                 {{ $errors->first('engine') }}
             </div>
             <div class="form-group">
-                {{ Form::select('transmission', array('Manual transmission' => 'Manual transmission', 'Automatic transmission' => 'Automatic transmission'), null, array('placeholder' => 'Transmission', 'class' => 'form-control'))}}
+                {{ Form::text('price', null , array('placeholder' => 'Prijs', 'class' => 'form-control')) }}
+            </div>
+            <div class="form-group">
+                {{ Form::select('transmission', array('Handgeschakeld' => 'Handgeschakeld', 'Automaat' => 'Automatisch'), null, array('placeholder' => 'Transmissie', 'class' => 'form-control'))}}
                 {{ $errors->first('make') }}
             </div>
             <div class="form-group">
-                {{ Form::text('make', null , array('placeholder' => 'Make', 'class' => 'form-control')) }}
+                {{ Form::text('make', null , array('placeholder' => 'Bouwjaar', 'class' => 'form-control')) }}
                 {{ $errors->first('make') }}
             </div>
             <div class="form-group">
-                {{ Form::text('milage', null , array('placeholder' => 'Millage', 'class' => 'form-control')) }}
+                {{ Form::text('milage', null , array('placeholder' => 'Kilometerstand', 'class' => 'form-control')) }}
                 {{ $errors->first('milage') }}
             </div>
             <div class="form-group">
                 {{ Form::select('status',
                                     array(
-                                        'Available' => 'Available',
-                                        'Coming soon' => 'Coming soon',
-                                        'Reserved' => 'Reserved',
-                                        'Sold' => 'Sold'
-                                    ), null, array('placeholder' => 'Status', 'class' => 'form-control'))}}
+                                        'Available' => 'Beschikbaar',
+                                        'Coming soon' => 'Binnenkort beschikbaar',
+                                        'Reserved' => 'Gereserveerd',
+                                        'Sold' => 'Verkocht'
+                                    ), null, array('placeholder' => 'Beschikbaarheid', 'class' => 'form-control'))}}
             </div>
             <div class="form-group">
-                {{ Form::text('location', null , array('placeholder' => 'Location', 'class' => 'form-control')) }}
+                {{ Form::text('location', null , array('placeholder' => 'Locatie', 'class' => 'form-control')) }}
             </div>
             <div class="form-group">
                 {{ Form::text('youtube', null , array('placeholder' => 'Youtube url', 'class' => 'form-control')) }}
