@@ -26,7 +26,7 @@
         </div>
         <div class="medium-6 columns">
             <div class="details">
-                <h2 class="tag">&euro; {{ $entry->car->price }}</h2>
+                <h2 class="tag">&euro; {{ number_format($entry->car->price, 0, ',', '.') }}</h2>
                 <p>{{ $entry->description }}</p>
                 <a class="button secondary round" href="{{ URL::route('front.inventory') }}">Terug naar occasions</a>
                 <dl class="dl-horizontal">
