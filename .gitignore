@@ -3,3 +3,5 @@ public/assets/node_modules
 npm-debug.log
 vendor
 .idea/workspace.xml
+
+app/config/database.php
