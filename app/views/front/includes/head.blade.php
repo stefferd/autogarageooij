@@ -14,3 +14,17 @@
 
 <link rel="stylesheet" href="{{ URL::asset('assets/build/css/main.css') }}" />
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-64947338-1', 'auto');
+    ga('send', 'pageview', {
+        page: '/{{$page->path}}',
+        title: '{{$page->title}}}'
+    });
+
+</script>
+<meta name="google-site-verification" content="knExrsr_B8LqsVEdO70i-evras1lojAajJRSfbvwW3Y" />

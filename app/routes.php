@@ -103,7 +103,7 @@ Route::get('/occasions/{filter}/{value}', ['as' => 'front.inventory.prefilter', 
 Route::post('/subscribe', ['as' => 'front.newsletter', 'uses' => 'FrontController@subscribe']);
 Route::post('/contact', ['as' => 'front.contact', 'uses' => 'FrontController@contact']);
 Route::get('/blog', ['as' => 'front.blog', 'uses' => 'BlogController@index']);
-Route::get('/{pageName}', ['as' => 'front.page', 'uses' => 'FrontController@page', 'except' => 'admin, install, occasions, newsubscription, blog, contact']);
+Route::get('/{pageName}', ['as' => 'front.page', 'uses' => 'FrontController@page', 'except' => 'admin, install, occasions, newsubscription, blog, contact', 'googlec42292a5f3b38e39.html']);
 
 // ===============================================
 // 404 ===========================================

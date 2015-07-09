@@ -5,3 +5,4 @@ vendor
 .idea/workspace.xml
 
 app/config/database.php
+app/config/mail.php
